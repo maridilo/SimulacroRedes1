@@ -96,4 +96,18 @@ La comunicación entre dos dispositivos en una red siguiendo el modelo TCP/IP im
 Cuando los datos llegan al destino, se desencapsulan capa por capa hasta ser entregados a la aplicación receptora.
 
 ---
+# Parte II: Capa Física y Ejercicios Prácticos
+
+## Pregunta 7: Cálculo de Tasa de Transmisión Máxima (Fórmula de Shannon)
+
+### Enunciado:
+Calcula la tasa de transmisión máxima para un canal con las siguientes características:
+
+- Ancho de banda: 500 MHz
+- SNR: 20 dB
+
+### Paso 1: Convertir SNR de dB a escala lineal
+
+La fórmula para pasar de decibelios (dB) a escala lineal es:
+
 
