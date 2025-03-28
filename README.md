@@ -109,5 +109,153 @@ Calcula la tasa de transmisión máxima para un canal con las siguientes caracte
 ### Paso 1: Convertir SNR de dB a escala lineal
 
 La fórmula para pasar de decibelios (dB) a escala lineal es:
+SNR(lineal) = 10^(SNR(dB) / 10)
 
+Sustituyendo:
 
+SNR(lineal) = 10^(20 / 10) = 10^2 = 100
+
+### Paso 2: Aplicar la fórmula de Shannon
+
+Fórmula de Shannon:
+
+C = B × log₂(1 + SNR)
+
+Donde:
+- C es la capacidad del canal (bps)
+- B es el ancho de banda (Hz)
+- SNR es la relación señal/ruido en escala lineal
+
+Convertimos 500 MHz a Hz:
+
+B = 500 × 10^6 Hz
+
+Aplicamos la fórmula:
+
+C = 500 × 10^6 × log₂(1 + 100) C = 500 × 10^6 × log₂(101)
+
+Calculamos el logaritmo en base 2:
+
+log₂(101) ≈ log₁₀(101) / log₁₀(2) ≈ 2.004 / 0.3010 ≈ 6.6582
+
+Entonces:
+
+C ≈ 500 × 10^6 × 6.6582 ≈ 3.329 × 10^9 bps = 3.33 Gbps
+
+**Resultado final:** La tasa máxima de transmisión es aproximadamente **3.33 Gbps**.
+
+---
+
+## Pregunta 8: Ubicación de Portadoras para Eficiencia Espectral
+
+### Enunciado:
+- Primera portadora: 1.2 GHz
+- Ancho de banda en banda base de cada canal: 300 MHz
+
+### a) Frecuencia de la portadora anterior
+
+Si el ancho de banda de cada canal es de 300 MHz, para evitar solapamientos y optimizar la eficiencia espectral, la separación entre portadoras debe ser de 300 MHz.
+
+Frecuencia de la portadora anterior:
+
+1.2 GHz - 300 MHz = 0.9 GHz
+
+### b) Frecuencia de la portadora posterior
+
+Frecuencia de la portadora posterior:
+
+1.2 GHz + 300 MHz = 1.5 GHz
+
+### Justificación:
+
+La **ubicación adecuada de las portadoras** garantiza que los canales no interfieran entre sí, especialmente en sistemas de multiplexación por frecuencia (FDM). Ubicar las portadoras separadas exactamente por el ancho de banda de cada canal maximiza la **eficiencia espectral**, permitiendo más canales en menos espacio del espectro sin interferencias.
+
+---
+
+## Pregunta 9: Identificación de Modulación en Función del BER
+
+### Enunciado:
+Ordena las siguientes modulaciones de mayor a menor robustez ante el ruido (misma SNR):
+
+- BPSK
+- QPSK
+- 16-QAM
+- 64-QAM
+- 256-QAM
+
+### Respuesta:
+
+1. **BPSK** (2 símbolos): Más robusta. Cada símbolo representa 1 bit, muy separadas en el espacio de constelación, muy tolerante al ruido.
+2. **QPSK** (4 símbolos): Menos robusta que BPSK, pero duplica la eficiencia. 2 bits por símbolo.
+3. **16-QAM** (16 símbolos): Cada símbolo representa 4 bits. Mayor eficiencia, menor robustez.
+4. **64-QAM** (64 símbolos): 6 bits por símbolo. Muy sensible al ruido.
+5. **256-QAM** (256 símbolos): 8 bits por símbolo. Máxima eficiencia, mínima tolerancia al ruido.
+
+### Justificación:
+
+A mayor número de símbolos por baudio (por unidad de tiempo), **menor separación** entre puntos de la constelación y **mayor probabilidad de error** ante ruido. Por tanto, la eficiencia espectral mejora, pero la **robustez disminuye**.
+
+---
+
+## Pregunta 10: Eficiencia del Sistema de Encapsulamiento
+
+### a) Tamaño del mensaje tras añadir cabeceras
+
+- Datos originales (Capa 5): 1.5 KB = 1.5 × 1024 = **1536 bytes**
+- Cabecera de Capa 4: 40 bytes
+- Cabecera de Capa 3: 40 bytes
+
+**Total:**
+
+1536 + 40 + 40 = 1616 bytes
+
+---
+
+### b) Fragmentación en tramas de 400 bytes
+
+La Capa 2 permite tramas de 400 bytes. Suponiendo que cada trama incluye cabeceras, el total de 1616 bytes debe fragmentarse:
+
+1616 / 400 = 4.04 → Se necesitan 5 tramas
+
+(4 tramas completas y una con el resto)
+
+---
+
+### c) Sobrecarga de la Capa 1 por trama
+
+Cada 2 bytes de datos agregan:
+
+- 1 byte de inicio
+- 1 byte de parada
+- 1 byte de CRC
+
+Es decir, por cada 2 bytes útiles se transmiten **3 bytes de sobrecarga**.
+
+Para una trama de 400 bytes:
+
+- Número de bloques de 2 bytes: 400 / 2 = 200 bloques
+- Sobrexarga total por trama: 200 × 3 = **600 bytes adicionales**
+
+---
+
+### d) Eficiencia del sistema
+
+#### Datos transmitidos totales:
+
+- 5 tramas × 400 bytes = 2000 bytes (datos sin capa física)
+- Sobrecarga de capa 1: 5 tramas × 600 bytes = 3000 bytes
+
+**Total transmitido:**  
+2000 + 3000 = 5000 bytes
+
+#### Datos útiles originales:
+
+1536 bytes (bloque inicial de Capa 5)
+
+#### Eficiencia:
+
+Eficiencia (%) = (Datos útiles / Total transmitido) × 100 Eficiencia = (1536 / 5000) × 100 ≈ 30.72%
+
+**Resultado final:** La eficiencia del sistema es aproximadamente **30.72%**.
+
+---
