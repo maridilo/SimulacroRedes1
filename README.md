@@ -35,7 +35,8 @@ La capa de transporte asegura la entrega confiable (o no) de datos entre proceso
 Protocolos asociados:
 •	TCP (Transmission Control Protocol): Protocolo confiable, orientado a conexión.
 •	UDP (User Datagram Protocol): No confiable, sin conexión.
-Tanto el modelo OSI como TCP/IP tienen una capa de transporte, aunque en OSI es más conceptual y en TCP/IP está más centrada en TCP y UDP.________________________________________
+Tanto el modelo OSI como TCP/IP tienen una capa de transporte, aunque en OSI es más conceptual y en TCP/IP está más centrada en TCP y UDP.
+________________________________________
 Pregunta 3: TCP vs. UDP
 Compara y contrasta TCP y UDP en términos de:
 •	Orientación a conexión
